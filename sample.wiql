@@ -1,0 +1,11 @@
+select
+  id,
+  title,
+  createddate
+from
+  workitems
+where
+  state = 'Active'
+  and assignedto in ('Alice', 'Bob')
+order by
+  createddate desc

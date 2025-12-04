@@ -55,6 +55,7 @@ coverage/
 # Sample files
 
 *.wiql
+!sample.wiql
 
 # Logs
 logs
