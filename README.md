@@ -1,5 +1,10 @@
 # WIQL Formatter
 
+![CI](https://github.com/jwardrop85/ado-wiql-formatter/actions/workflows/ci.yml/badge.svg?branch=main)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Node](https://img.shields.io/badge/node-18.x-brightgreen.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.9.5-blue.svg?logo=typescript)
+
 This is a minimal VS Code extension that provides formatting for WIQL files (`.wiql`).
 
 Install and development
