@@ -36,6 +36,9 @@ jobs:
       - name: Compile TypeScript
         run: npm run compile
 
+      - name: Run tests
+        run: npm test
+
       - name: Package VSIX
         # Use npx so we don't require a local/global install of vsce
         run: npx vsce package --out "${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}.vsix"
