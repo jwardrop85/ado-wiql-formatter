@@ -18,7 +18,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20.x'
           cache: 'npm'
 
       - name: Install dependencies
@@ -45,7 +45,7 @@ jobs:
 
       - name: Package VSIX
         # Use npx so we don't require a local/global install of vsce
-        run: npx @vscode/vsce package --out "${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}.vsix"
+        run: npx @vscode/vsce package --out "${PACKAGE_NAME}-${PACKAGE_VERSION}.vsix"
 
       - name: Create GitHub Release and upload VSIX
         # softprops/action-gh-release creates a release from the tag (or draft) and uploads matching files
