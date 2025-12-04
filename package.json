@@ -4,7 +4,7 @@
   "description": "A simple WIQL formatter extension for VS Code (TypeScript).",
   "version": "0.0.1",
   "publisher": "jwitlabs",
-  "license": "SEE LICENSE IN LICENSE file",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.60.0"
   },
