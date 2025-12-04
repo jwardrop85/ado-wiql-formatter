@@ -1,0 +1,40 @@
+name: Publish VSIX Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+      - name: Read package name and version
+        run: |
+          echo "PACKAGE_NAME=$(node -p \"require('./package.json').name\")" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Compile TypeScript
+        run: npm run compile
+
+      - name: Package VSIX
+        # Use npx so we don't require a local/global install of vsce
+        run: npx vsce package --out "${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}.vsix"
+
+      - name: Create GitHub Release and upload VSIX
+        # softprops/action-gh-release creates a release from the tag (or draft) and uploads matching files
+        uses: softprops/action-gh-release@v1
+        with:
+          files: "${{ env.PACKAGE_NAME }}-${{ env.PACKAGE_VERSION }}.vsix"
