@@ -1,8 +1,10 @@
 {
-  "name": "wiql-formatter",
+  "name": "ado-wiql-formatter",
   "displayName": "WIQL Formatter",
   "description": "A simple WIQL formatter extension for VS Code (TypeScript).",
   "version": "0.0.1",
+  "publisher": "jwitlabs",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.60.0"
   },
