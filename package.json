@@ -1,0 +1,60 @@
+{
+  "name": "wiql-formatter",
+  "displayName": "WIQL Formatter",
+  "description": "A simple WIQL formatter extension for VS Code (TypeScript).",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Formatters"
+  ],
+  "activationEvents": [
+    "onLanguage:wiql"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "prettier": "prettier --write .",
+    "test": "npm run compile && mocha --exit"
+  },
+  "devDependencies": {
+    "typescript": "~4.9.5",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.60.0",
+    "vscode": "^1.1.37",
+    "mocha": "^10.2.0",
+    "chai": "^4.3.7"
+  },
+  "dependencies": {
+    "node-sql-parser": "^4.11.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "wiql",
+        "aliases": [
+          "WIQL",
+          "wiql"
+        ],
+        "extensions": [
+          ".wiql"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "WIQL Formatter Settings",
+      "properties": {
+        "wiqlFormatter.uppercaseKeywords": {
+          "type": "boolean",
+          "default": true,
+          "description": "Uppercase WIQL keywords"
+        }
+      }
+    }
+  }
+}
