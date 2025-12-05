@@ -1,11 +1,1 @@
-select
-  id,
-  title,
-  createddate
-from
-  workitems
-where
-  state = 'Active'
-  and assignedto in ('Alice', 'Bob')
-order by
-  createddate desc
+SELECT [System.Id], [System.TeamProject], [System.WorkItemType], [System.Title], [System.AssignedTo], [System.State], [Microsoft.VSTS.Scheduling.OriginalEstimate], [Microsoft.VSTS.Scheduling.RemainingWork], [Microsoft.VSTS.Scheduling.CompletedWork], [System.Tags] FROM  WorkItemLinks WHERE (Source.[System.WorkItemType] = 'User Story' AND Source.[System.State] <> 'Closed' AND Source.[System.State] <> 'Removed') AND ( [System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward' ) AND ( Target.[System.WorkItemType] <> '' ) ORDER BY [SYSTEM.TEAMPROJECT], [SYSTEM.ID] MODE (MUSTCONTAIN)
